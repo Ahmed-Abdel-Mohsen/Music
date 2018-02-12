@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Music</string>
     <string name="LibraryActivity">Library</string>
+    <string name="song1">Waka Waka</string>
+    <string name="song2">Shape of You</string>
+    <string name="song3">Get Busy</string>
+    <string name="song4">See You Again</string>
+    <string name="song5">Uptown Funk</string>
+    <string name="song6">Thinking Out Loud</string>
+    <string name="song7">I Gotta Feeling</string>
 </resources>

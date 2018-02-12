@@ -49,9 +49,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="#4CAF50"
+            android:background="@color/Play"
             android:text="Play"
             android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:text="Back"
+            android:textAllCaps="true" />
     </LinearLayout>
 </LinearLayout>

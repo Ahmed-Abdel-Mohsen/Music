@@ -1,16 +1,12 @@
 package com.example.android.music;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,13 +33,13 @@ public class SongAdapter extends ArrayAdapter<Song> {
         }
         Song currentSong = getItem(position);
 
-        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image_item);
+        ImageView imageView = listItemView.findViewById(R.id.image_item);
         imageView.setImageResource(currentSong.getImage());
 
-        TextView songTextView = (TextView) listItemView.findViewById(R.id.song_name);
+        TextView songTextView = listItemView.findViewById(R.id.song_name);
         songTextView.setText(currentSong.getName());
 
-        TextView durationTextView = (TextView) listItemView.findViewById(R.id.duration_text_view);
+        TextView durationTextView = listItemView.findViewById(R.id.duration_text_view);
         durationTextView.setText(String.format("%02d:%02d", currentSong.getLength() / 60, currentSong.getLength() % 60));
 
 

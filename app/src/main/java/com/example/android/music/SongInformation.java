@@ -1,6 +1,6 @@
 package com.example.android.music;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,14 +23,15 @@ public class SongInformation extends AppCompatActivity {
         TextView songDateTextView = (TextView) findViewById(R.id.song_date_text_view);
         TextView songLengthTextView = (TextView) findViewById(R.id.song_length_text_view);
 
-        songImage.setImageResource(Integer.parseInt(getIntent().getStringExtra("SongImage")));
-        songNameTextView.setText("Name: " + getIntent().getStringExtra("SongName"));
-        songBandTextView.setText("Singer: " + getIntent().getStringExtra("SongBand"));
-        songDateTextView.setText("Release Date: " + getIntent().getStringExtra("SongDate"));
-        int length = Integer.parseInt(getIntent().getStringExtra("SongLength"));
+        Song song = getIntent().getExtras().getParcelable("song");
+        songImage.setImageResource(song.getImage());
+        songNameTextView.setText("Name: " + song.getName());
+        songBandTextView.setText("Singer: " + song.getBand());
+        songDateTextView.setText("Release Date: " + song.getReleaseDate());
+        int length = song.getLength();
         songLengthTextView.setText("Length: " + String.format("%02d:%02d", length / 60, length % 60));
 
-        setTitle(getIntent().getStringExtra("SongName"));
+        setTitle(song.getName());
         clicked = false;
         final Button playButton = (Button) findViewById(R.id.play_button);
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +46,14 @@ public class SongInformation extends AppCompatActivity {
                     playButton.setBackgroundColor(getResources().getColor(R.color.Play));
                     playButton.setText("Play");
                 }
+            }
+        });
+
+        final Button backButton = (Button) findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SongInformation.this, Library.class));
             }
         });
     }

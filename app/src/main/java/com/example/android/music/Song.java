@@ -1,10 +1,13 @@
 package com.example.android.music;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by ahmed on 2/8/2018.
  */
 
-public class Song {
+public class Song implements Parcelable{
     private String name;
     private int image;
     private String band;
@@ -18,6 +21,26 @@ public class Song {
         this.length = length;
         this.releaseDate = releaseDate;
     }
+
+    protected Song(Parcel in) {
+        name = in.readString();
+        image = in.readInt();
+        band = in.readString();
+        length = in.readInt();
+        releaseDate = in.readInt();
+    }
+
+    public static final Creator<Song> CREATOR = new Creator<Song>() {
+        @Override
+        public Song createFromParcel(Parcel in) {
+            return new Song(in);
+        }
+
+        @Override
+        public Song[] newArray(int size) {
+            return new Song[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -57,5 +80,19 @@ public class Song {
 
     public void setReleaseDate(int releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeInt(image);
+        parcel.writeString(band);
+        parcel.writeInt(length);
+        parcel.writeInt(releaseDate);
     }
 }
